@@ -3,12 +3,14 @@ import tensorflow as tf
 
 # load numbers dataset from tensorflow module
 mnist = tf.keras.datasets.mnist
+
 # split the dataset to training and testing data
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
 # normalize data
 x_train = tf.keras.utils.normalize(x_train, axis=1)
 x_test = tf.keras.utils.normalize(x_test, axis=1)
+
 
 # create a model
 model = tf.keras.models.Sequential([
@@ -23,6 +25,7 @@ model = tf.keras.models.Sequential([
     tf.keras.layers.Dropout(0.5),
     tf.keras.layers.Dense(10, activation='softmax')
 ])
+
 
 # compile the module
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
